@@ -35,9 +35,9 @@
 </head>
 <body>
 
-  <img id="baby-img" src="baby-neutral.jpg" alt="Baby asking you">
+  <img id="baby-img" src="baby-neutral.png" alt="Baby asking you">
   
-  <h1>Hi <span id="guest-name"></span>, are you coming to my Daddy’s wedding?</h1>
+  <h1>Hi <span id="guest-name"></span>, are you coming to my Mommy and Papa's wedding?</h1>
 
   <div class="buttons">
     <button id="yes-btn">Yes</button>
@@ -53,9 +53,9 @@
     // --- Handle Baby Image Swap ---
     const babyImg = document.getElementById("baby-img");
 
-    const neutralImage = "baby-neutral.jpg"; // default baby face
-    const happyImage = "baby-happy.jpg";     // happy face when hovering Yes
-    const sadImage = "baby-sad.jpg";          // sad face when hovering No
+    const neutralImage = "baby-neutral.png"; // default baby face
+    const happyImage = "baby-happy.png";     // happy face when hovering Yes
+    const sadImage = "baby-sad.png";          // sad face when hovering No
 
     document.getElementById("yes-btn").addEventListener("mouseover", () => {
       babyImg.src = happyImage;
@@ -72,15 +72,15 @@
 
     // --- Submit RSVP to Google Form ---
     function submitRSVP(name, answer) {
-      const formURL = "https://docs.google.com/forms/d/e/XXXXXXXXX/formResponse"; // <-- replace with your real Form URL
+      const formURL = "https://docs.google.com/forms/d/e/1FAIpQLSfwxaYq6w8wFnMMlwr_e0Kq3s7-f0SnDJV6UQSPPyMWQynIrQ/formResponse";
       
       const formData = new FormData();
-      formData.append("entry.12345", name);   // <-- replace entry IDs with yours
-      formData.append("entry.67890", answer); // <-- replace entry IDs with yours
+      formData.append("entry.780136043", name);    // Guest Name field
+      formData.append("entry.2082231800", answer);  // Yes/No Attendance field
 
       fetch(formURL, {
         method: "POST",
-        mode: "no-cors", // Required for Google Forms
+        mode: "no-cors",
         body: formData
       }).then(() => {
         console.log("RSVP submitted!");
