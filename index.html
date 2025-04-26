@@ -50,8 +50,17 @@
       }
     }
 
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
     .bounce {
       animation: bounce 0.5s;
+    }
+
+    .fade-in {
+      animation: fadeIn 1s;
     }
   </style>
 </head>
@@ -65,13 +74,13 @@
     Friday, September 19th — Athens, Greece
   </p>
 
+  <div id="thank-you-message" style="display:none; margin-top:30px; font-size:36px; font-weight:bold; color:#007BFF;">
+    Thank you for your RSVP! 🎉
+  </div>
+
   <div class="buttons">
     <button id="yes-btn">Yes</button>
     <button id="no-btn">No</button>
-  </div>
-
-  <div id="thank-you-message" style="display:none; margin-top:30px; font-size:28px; color:green;">
-    Thank you for your RSVP! 🎉
   </div>
 
   <script>
@@ -132,12 +141,18 @@
     // --- Button Click Logic ---
     document.getElementById("yes-btn").addEventListener("click", () => {
       submitRSVP(guestName, "Yes");
-      document.getElementById("thank-you-message").style.display = "block";
+      babyImg.src = happyImage; // Lock happy face
+      const thankYou = document.getElementById("thank-you-message");
+      thankYou.style.display = "block";
+      thankYou.classList.add("fade-in");
     });
 
     document.getElementById("no-btn").addEventListener("click", () => {
       submitRSVP(guestName, "No");
-      document.getElementById("thank-you-message").style.display = "block";
+      babyImg.src = sadImage; // Lock sad face
+      const thankYou = document.getElementById("thank-you-message");
+      thankYou.style.display = "block";
+      thankYou.classList.add("fade-in");
     });
   </script>
 
